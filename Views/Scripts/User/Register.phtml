@@ -1,0 +1,160 @@
+ <script type="text/javascript">
+	 var RecaptchaOptions = {
+	    theme : 'blackglass'
+	 };
+ </script>
+
+
+<p>The administrators and moderators of this board cannot be held responsible for any content 
+	contained within. Each member is responsible for his own posts. However, the admins and moderators
+	will do their best to maintain a Christian environment. Their decisions are final.<br /><br />
+
+The rules of this board are as follows:</p>
+
+<ul>
+	<li>This board is Christian in nature. Posts that are blasphemous or otherwise offensive to a 
+		Christian worldview may be deleted.</li>
+	
+	<li>Members are expected to maintain a Christian attitude and conduct on this board. Posters who 
+		refuse to do so or who repeatedly act in a non-Christian manner may be banned.</li>
+	
+	<li>Members who are discovered to be misrepresenting themselves --- i.e. providing false information 
+		about themselves in order to deceive others --- will be banned permanently. Similarly, members who 
+		harass, stalk, or otherwise act in a threatening manner will be banned, and legal action may be 
+		taken. It is our goal that members of this community be trustworthy and that posters can feel 
+		reasonably secure that they are interacting with people of good Christian character who are honest 
+		about themselves.</li>
+	
+	<li>This site is for the Redeemed clan. Material that is deemed to be promoting other clans may be 
+		removed at the administrators' discretion.</li>
+
+	<li>Commercial advertising is strictly banned. This includes, but is not limited to, registering 
+		accounts for the sole purpose of advertising; posting advertisements on the board; attempting to 
+		trick people into visiting commercial sites; and any other actions that are not in keeping with 
+		the spirit of this community.</li>
+</ul>
+<br /><br />
+<p>By registering an account, you agree to the above terms and conditions.</p>
+
+<form action="<?=SITE_PATH?>user/register" method="post">
+<ol class="form">
+    <li>
+        <label>Username</label>
+        <input type="text" name="username" value="<?=$this->formValues['username']?>" id='username' />
+        <label id="availability"></label>
+        <? if(isset($this->errors['username'])) : ?>
+            <ul class="error">
+            <? foreach($this->errors['username'] as $error) : ?>
+                <li><?=$_messages[$error]?></li>
+            <? endforeach; ?>
+            </ul>
+        <? endif; ?>
+    </li>
+    <li>
+        <label>Password</label>
+        <input type="password" name="password" />
+        <? if(isset($this->errors['password'])) : ?>
+            <ul class="error">
+            <? foreach($this->errors['password'] as $error) : ?>
+                <li><?=$_messages[$error]?></li>
+            <? endforeach; ?>
+            </ul>
+        <? endif; ?>
+    </li>
+    <li>
+        <label>Password Again</label>
+        <input type="password" name="password2" />
+        <? if(isset($this->errors['password2'])) : ?>
+            <ul class="error">
+            <? foreach($this->errors['password2'] as $error) : ?>
+                <li><?=$_messages[$error]?></li>
+            <? endforeach; ?>
+            </ul>
+        <? endif; ?>
+    </li>
+    <li>
+        <label>Email</label>
+        <input type="text" name="email" value="<?=$this->formValues['email']?>" />
+        <? if(isset($this->errors['email'])) : ?>
+            <ul class="error">
+            <? foreach($this->errors['email'] as $error) : ?>
+                <li><?print_r($error)?><?=$_messages[$error]?></li>
+            <? endforeach; ?>
+            </ul>
+        <? endif; ?>
+    </li>
+    <li>
+        <label>Birthday</label>
+        <br />
+        <select name="birthday_day">
+            <option value="0">-</option>
+            <? for($i = 1; $i < 32; $i++) : ?>
+    		    <option value="<?=$i?>"
+    		        <? if($this->formValues['birthday_day'] == $i) : ?>
+    		            selected="selected"
+    		        <? endif; ?>
+    		        ><?=$i?></option>
+    		<? endfor;?>
+        </select>
+        
+        <select name="birthday_month">
+            <? $months = array(
+                      0 => '-',
+                      1 => 'January',
+                      2 => 'February',
+                      3 => 'March',
+                      4 => 'April',
+                      5 => 'May',
+                      6 => 'June',
+                      7 => 'July',
+                      8 => 'August',
+                      9 => 'September',
+                      10 => 'October',
+                      11 => 'November',
+                      12 => 'December'
+                      );?>
+        <? foreach($months as $key => $name) : ?>
+            <option value="<?=$key?>" 
+                <? if($this->formValues['birthday_month'] == $key) : ?>
+                    selected="selected"
+                <? endif; ?>
+                ><?=$name?></option>
+        <? endforeach; ?>
+        </select>
+        
+        <select name="birthday_year">
+            <option value="0">-</option>
+            <? for($i = date('Y'); $i > 1968; $i--) : ?>
+                <option value="<?=$i?>"
+                <? if(isset($this->formValues['birthday_year']) && 
+                            $this->formValues['birthday_year'] == $i) : ?>
+		            selected="selected"
+		        <? endif; ?>
+		        ><?=$i?></option>
+            <? endfor;?>
+        </select>
+        
+        <? if(isset($this->errors['birthday'])) : ?>
+            <ul class="error">
+            <? foreach($this->errors['birthday'] as $error) : ?>
+                <li><?=$_messages[$error]?></li>
+            <? endforeach; ?>
+            </ul>
+        <? endif; ?>
+    </li>
+    <!--<li>
+        <label>"Hey, we don't serve their kind, these droids."</label>
+        <?//$this->captcha?>
+        <? //if(isset($this->errors['captcha'])) : ?>
+            <ul class="error">
+            <? //foreach($this->errors['captcha'] as $error) : ?>
+                <li><?//$_messages[$error]?></li>
+            <?// endforeach; ?>
+            </ul>
+        <? //endif; ?>
+    </li>-->
+    <li><input type="submit" value="Register" /></li>
+    <?print_r($this->errors)?>
+</ol>
+</form>
+

@@ -1,0 +1,81 @@
+
+<?=alink('admin/', 'Admin Controls');?> &raquo;&nbsp;Group&nbsp;Permissions
+
+<? if($this->mode == 'select') : ?>
+	<div class="container">
+		<div class="header">Select a group</div>
+		<form action="<?=SITE_PATH?>admin/groupacl" method="post">
+			<input type="hidden" name="group_selected" value="yes" />
+			<select name="groupid">
+				<? foreach($this->groups as $group) : ?>
+					<option value="<?=$group['id']?>"><?=$group['name']?></option>
+				<? endforeach; ?>
+			</select>
+			<input type="submit" value="Edit" />
+		</form>
+	</div>
+<? else : ?>		
+	
+	<div class="container">
+		<div class="header">Global Permissions for <?=$this->group['name']?></div>
+		<table>
+			<thead>
+				<tr>
+					<td>Module</td>
+					<td>Page</td>
+					<td>Action</td>
+					<td>Access</td>
+				</tr>
+			</thead>
+			<? foreach($this->globalperms as $perm) : ?>
+				<tr>
+					<td><?=$perm['module']?></td>
+					<td><?=$perm['page']?></td>
+					<td><?=$perm['action']?></td>
+					<td>
+						<form action="<?=SITE_PATH?>admin/groupacl" method="post">
+							<input type="hidden" name="groupid" value="<?=$group['id']?>" />
+							<select name="access">
+								<? if($perm['access'] == ALLOW) : ?>
+									<option value="<?=ALLOW?>" selected="selected">Allow</option>
+								<? else: ?>
+									<option value="<?=ALLOW?>">Allow</option>
+								<? endif; ?>
+								
+								<? if($perm['access'] == DENY) : ?>
+									<option value="<?=DENY?>" selected="selected">Deny</option>
+								<? else: ?>
+									<option value="<?=DENY?>">Deny</option>
+								<? endif; ?>
+							</select>
+							<input type="submit" />
+						</form>
+					
+					</td>
+				</tr>
+			<? endforeach; ?>
+		</table>
+	</div>
+	
+	<div class="container">
+		<div class="header">Forum Category Permissions</div>
+		<table>
+			<thead>
+				<tr>
+					<td>Category</td>
+					<td>Action</td>
+					<td>Permission</td>
+				</tr>
+			</thead>
+			<? foreach($this->categoryPermissions as $perm) : ?>
+				<tr>
+					<td><?=$perm['forum_category']['title']?></td>
+					<td><?=$perm['action']?></td>
+					<td><?=$perm['access']?></td>
+				</tr>
+			<? endforeach; ?>
+		</table>
+	</div>
+	
+	
+<? endif; ?>

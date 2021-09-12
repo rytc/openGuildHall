@@ -1,0 +1,339 @@
+.avatar {
+	margin: 4px 0 4px 0;	
+}
+
+div.category {
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	width: 97%;
+	overflow-x: none;
+	margin: 0.5em auto;	
+}
+
+div.category div.cattitle {
+	background-image: url('Graphics/subheader.png');
+	background-position: bottom left;
+	background-color: #1C2033;
+	color: #FFF;
+	font-size: 1em;
+	padding: 6px;
+	margin: 1px;
+	margin-bottom: 0px;
+}
+
+div.category div.cattitle a {
+	color: #FFF;
+	margin: 6px;	
+}
+
+div.category div.boards {
+	margin: 1px;
+}
+
+div.boards table {
+	width: 100%;
+}
+
+div.boards table thead tr.heading td {
+	background-color: #CCC;
+	border-right: 1px solid #FFF;
+	border-bottom: 1px solid #FFF;
+	font-size: 0.7em;
+	text-align: center;
+	padding: 4px;
+}
+
+div.boards table thead tr.heading td:last-child,
+div.boards table tbody tr td:last-child {
+	border-right: 0;	
+}
+
+
+div.post {
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	clear: both;
+	width: 97%;
+	margin: 0.5em auto;
+	overflow: hidden;
+}
+
+div.post div.posthead {
+	background-image: url('Graphics/subheader.png');
+	background-position: bottom left;
+	background-color: #1C2033;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 0.8em;
+	margin: 1px;
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+
+div.post div.posthead span.posthead {
+	display: block;
+	padding: 4px;
+	color: #FFF;
+	font-weight: bold;
+	font-size: 1em;
+}
+
+div.post div.posthead a {
+	color: #FFF;
+	float: right;
+}
+
+div.posttitle {
+	background-color: #CCC;
+	font-weight: bold;
+	font-size: 0.9em;
+}
+
+div.postfooter {
+	background-color: #CCC;
+	margin-left: 200px;
+	text-align: right;
+	min-height: 1.5em;
+}
+
+div.postfooter span.postfooter {
+}
+
+div.posttitle span.posttitle {
+	display:block;
+	padding: 4px;
+
+}
+
+div.posttitle span.posttitle a {
+	color: #000;	
+}
+
+div.posttitle span.posttitle a:hover {
+	text-decoration: none;	
+}
+
+div.postfooter a {
+	text-decoration: none;
+}
+
+div.post div.user {
+	float: left;
+	font-size: 0.9em;
+	padding: 4px 4px 4px 8px;
+	width: 200px;	
+}
+
+div.post div.user span.username {
+	display: block;
+}
+
+div.post div.user span.username a {
+	text-decoration: none;
+	font-size: 1em;
+	font-weight: bold;
+	padding: 4px;
+}
+
+div.post div.user span.username a:hover {
+	text-decoration: underline;
+}
+
+div.post div.user span.title {
+	display: block;
+	font-size: 0.8em;
+}
+
+
+div.post div.body {
+	display:block;
+	border-left: 1px solid #CCC;
+	text-align: left;
+	margin-left: 200px;
+	font-size: 0.9em;
+}
+
+div.post div.signature {
+	max-width: 100%;
+	max-height: 200px;
+	overflow: scroll;
+}
+
+div.post div.body hr {
+	margin-top: 2em;	
+}
+
+div.content {
+	padding: 8px;
+}
+
+table.forum {
+	background-color: #EEE;
+	padding: 1px;
+	width: 97%;
+}
+
+table.forum thead tr.title {
+	background-color: #1C2033;
+}
+
+table.forum thead tr.title td {
+	background-color: #1C2033;
+	background-image: url('Graphics/subheader.png');
+	background-repeat: repeat-x;
+	background-position: bottom left;
+	color: #FFF;
+	padding: 0.5em;
+	font-size: 1em;
+}
+
+table.forum thead tr.title td a {
+	color: #FFF;	
+}
+
+table.forum thead tr.heading {
+	background-color: #1C2033;
+	padding: 1em;
+}
+
+table.forum thead tr.heading td {
+	background-color: #CCC;
+	border: 1px solid #FFF;
+	color: #000;
+	padding: 0.25em;
+	font-size: 0.9em;
+	text-align: center;
+}
+
+tbody {
+	
+}
+
+td {
+	padding: 4px;
+}
+
+tbody tr {
+	border-bottom: 1px solid #FFF;
+}
+
+td.status, td.topics, td.posts {
+	background-color: #EEE;
+	border-right: 1px solid #FFF;
+	text-align: center;
+}
+
+td.status {
+	width: 42px;
+}
+
+td.board, td.lastpost {
+	border-right: 1px solid #FFF;
+	text-align: left;
+	width: 25%;
+}
+
+td.lastpost {
+	background-color:#DDD;
+	padding: 4px;
+	font-size: 0.9em;
+}
+
+td.board {
+	padding: 4px;
+	width: 50%;
+}
+
+td.board a.title {
+	margin: 4px;
+	text-decoration: none;
+	font-size: 1em;
+}
+
+td.board a.title:hover {
+	text-decoration: underline;
+}
+
+td.board a.primeurl {
+	font-weight: normal;
+	font-size: 0.9em;	
+}
+
+td.board p {
+	display: block;
+	margin-top: 6px;
+	margin-bottom: 0;
+	padding: 0;
+	text-indent: 0;
+	font-size: 0.7em;
+}
+
+td.board a {
+
+}
+
+td.author {
+	background-color: #DDD;
+	text-align: center;	
+}
+
+td.stats {
+	text-align: right;
+	font-size: 0.8em;
+}
+
+td.stats .viewslabel {
+	color: #777;	
+}
+
+tbody tr.post {
+	
+}
+
+tr.space td {
+	background-color: #FFF;	
+}
+
+tr.posthead {
+	
+}
+
+td.posthead {
+	padding: 4px;
+	background-color: #1C2033;	
+}
+
+td.posthead span {
+	color: #FFF;
+	font-weight: bold;
+}
+
+td.user {
+	padding-left: 6px;
+	width: 15%;
+}
+
+
+
+td.user span.userinfo {
+	font-size: 0.7em;	
+}
+
+td.body {
+	padding: 8px;
+	vertical-align: top;	
+}
+
+td.body div.postinfo {
+	border-bottom: 1px solid #AAA;
+	font-size: 0.8em;
+	padding: 4px;
+	margin-bottom: 12px;	
+}
+
+td.body div.postinfo span.posttitle {
+	display:block;	
+}
+
+
+

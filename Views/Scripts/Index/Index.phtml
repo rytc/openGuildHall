@@ -1,0 +1,61 @@
+<div class="community">
+	<div class="header">
+		<h2>General Information</h2>
+	</div>
+	<p>Welcome to your new installation of Open guild Hall! Some general information
+	about your guild should go here, like what kind of games you like to play, who can
+	join, how new members can join and anything else you think should go here. The default
+	login is admin:admin.</p>
+
+	<p>Please note that this is a pre-alpha version and is definitly not ready for real use.</p>
+	
+	<br />
+	<div class="header">
+		<h2>Recent Forum Activity</h2>
+	</div>
+	<ol id="latest">
+	<? if(empty($this->latestThreads)) : ?>
+		<p style="font-weight: bold">There are no forum posts.</p>
+	<? else : ?>
+		<? foreach($this->latestThreads as $thread) : ?>
+			<? if(!isset($thread['post'])) { continue; } ?>
+			<?$threadurl = cleanTextForURL($thread['title']).'-'.$thread['id']?>
+			<li>
+				<?=alink("forum/thread/".$threadurl."/last", $thread['title'])?> by
+				<?=alink("user/profile/".cleanTextForURL($thread['post']['author_username']), 
+						$thread['post']['author_username'])?> <br /> 
+				<span class="date"><?=formatDate($thread['post']['date'], true)?></span>
+			</li>
+		<? endforeach; ?>
+	<? endif; ?>
+	</ol>
+</div>
+
+<? if(empty($this->news)) : ?>
+    <p style="font-weight: bold">There is no news.</p>
+<? else : ?>
+    <ol id="news">
+    <? foreach($this->news as $newsItem) : ?>
+        <li>
+			<div class="news_item">
+				<div class="header">
+					<?$threadurl = cleanTextForURL($newsItem['title']).'-'.$newsItem['thread_id']?>
+					<h2><?=alink("forum/thread/".$threadurl, parseUserText($newsItem['title'], false, false))?></h2>
+				</div>
+				<div class="content">
+					<?=$this->parseUserText($newsItem['copy'], !$newsItem['disable_smileys'], !$newsItem['disable_bbcode'])?>
+				</div>
+				<div class="footer">
+					<sub>Posted by: <?=alink("user/profile/".cleanTextForURL($newsItem['author']), $newsItem['author'])?>
+					<?=$this->formatDate($newsItem['date'], true)?> under 
+					<?=alink("forum/board/".$newsItem['board_id'], $newsItem['board_title'])?>
+					</sub>
+				</div>
+
+			</div>
+		</li>
+	<? endforeach; ?>
+	</ol>
+<? endif; ?>
+
+

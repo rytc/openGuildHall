@@ -1,0 +1,17 @@
+#
+# Doxygen config file for openGuildHall
+#
+
+
+PROJECT_NAME = openGuildHall
+PROJECT_NUMBER = 0.2a
+
+OUTPUT_DIRECTORY = docs/
+EXCLUDE = System/Library/
+EXCLUDE = Themes/
+
+FILE_PATTERNS = *.php
+
+SOURCE_BROWSER = YES
+RECURSIVE = YES
+JAVADOC_AUTOBRIEF = YES

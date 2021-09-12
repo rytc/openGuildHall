@@ -1,0 +1,61 @@
+
+<? if(empty($this->categories)) : ?>
+
+	<p>The forum has not yet been setup.</p>
+<? endif; ?>
+
+<? foreach($this->categories as $category) : ?>
+<div class="category">
+	<div class="cattitle">
+		<?=alink('forum/category/'.cleanTextForURL($category['title'].'-'.$category['id']), $category['title'])?>
+	</div>
+	<div class="boards">
+		<table>
+		<thead>
+			<tr class="heading">
+				<td>&nbsp;</td>
+				<td><span>Boards</span></td>
+				<td><span>Stats</span></td>
+				<td><span>Last Post</span></td>
+			</tr>
+		</thead>
+		<tbody>
+			<? if(!empty($this->boards[$category['id']])) : ?>
+				<? foreach($this->boards[$category['id']] as $board) : ?>
+				<tr>
+					<td class="status">
+						<? if(boardIsUnread($board['id'])) : ?>
+							<div class="sprite newposts">&nbsp;</div>
+						<? else : ?>
+							<div class="sprite nonewposts">&nbsp;</div>
+						<? endif; ?>
+					</td>
+					<td class="board">
+						<?$boardurl = cleanTextForURL($board['title']).'-'.$board['id'];?>
+						<a href="<?=SITE_PATH?>forum/board/<?=$boardurl?>" class="nonew"><?=$board['title']?></a>
+						<p><?=$board['description']?></p>
+					</td>
+					<td class="stats">
+						<span class="postlabel"><?=$board['thread_count']?> <?=pl('Thread', 'Threads', $board['thread_count'])?></span><br />
+						<span class="postlabel"><?=$board['post_count']?> <?=pl('Post', 'Posts', $board['post_count'])?></span>
+					</td>
+					<td class="lastpost">
+						<? if(!empty($board['last_post'])) : ?>
+						<?$lastPost = $board['last_post']?>
+						<?$lastPostURL = cleanTextForURL($lastPost['thread_title'].'-'.$lastPost['thread_id'])?>
+						In <?=alink("forum/thread/".$lastPostURL, parseUserText($lastPost['thread_title'], false, false))?>
+						<div class="sprite goto"><?=alink("forum/thread/".$lastPostURL."/last", "&nbsp;&nbsp;")?></div> 
+						by <?=profileLink($lastPost['author'])?> <br />
+						on <?=formatDate($lastPost['date'], true)?>
+						<? else : ?>
+							No new posts
+						<? endif; ?>
+					</td>
+				</tr>
+				<? endforeach; ?>
+			<? endif; ?>
+		</tbody>
+		</table>
+	</div>
+</div>
+<?  endforeach; ?>

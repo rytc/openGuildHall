@@ -1,0 +1,61 @@
+<?=alink('forum/', 'Redeemed Forum')?> &raquo;
+<?$categoryurl = cleanTextForURL($this->category['title']).'-'.$this->category['id'];?>
+<?=alink('forum/board/'.$categoryurl, $this->category['title'])?>
+
+<? if(isset($this->thread['title'])) : ?>
+<?$threadurl = cleanTextForURL($this->thread['title'].'-'.$this->thread['id']);?>
+&raquo; <?=alink('forum/thread/'.$threadurl, $this->thread['title'])?>
+<? endif; ?>
+
+<? if($this->isPreview) : ?>
+<div class="post">
+	<div class="posthead">
+		<span class="posthead">Preview</span>
+	</div>
+	<div class="content">
+		<?=parseUserText($this->formValues['copy'], !$this->formValues['disable_bbcode'], !$this->formValues['disable_smileys'])?>
+	</div>
+</div>
+<? endif; ?>
+
+<div class="post">
+	<div class="posthead">
+		<span class="posthead">Your Message</span>
+	</div>
+	<form action="<?=SITE_PATH?>forum/post/<?=$this->mode?>/<?=$this->id?>" method="post">
+		<ol class="form">
+			<li>
+				<label>Title</label>
+				<? if(isset($this->errors['title'])) : ?>
+					<ul class="error">
+					<? foreach($this->errors['title'] as $error) : ?>
+						<li><?=$error?></li>
+					<? endforeach; ?>
+					</ul>
+				<? endif; ?>
+				<input type="text" name="title" size="40" value="<?=$this->formValues['title']?>" />
+			</li>
+			<li>
+				<label>Message body</label>
+				<? if(isset($this->errors['copy'])) : ?>
+					<ul class="error">
+					<? foreach($this->errors['copy'] as $error) : ?>
+						<li><?=$error?></li>
+					<? endforeach; ?>
+					</ul>
+				<? endif; ?>
+				<textarea rows="15" cols="75" name="copy"><?=$this->formValues['copy']?></textarea>
+			</li>
+			<li>
+				<?=checkbox('disable_bbcode', 1, $this->formValues['disable_bbcode'])?>&nbsp;Disable&nbsp;BBCode
+			</li>
+			<li>
+				<?=checkbox('disable_smileys', 1, $this->formValues['disable_smileys'])?>&nbsp;Disable&nbsp;Smilies
+			</li>
+			<li>
+				<input type="submit" name="submit" value="Preview" />
+				<input type="submit" name="submit" value="Submit" />
+			</li>
+		</ol>
+	</form>
+</div>

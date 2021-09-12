@@ -1,0 +1,50 @@
+div.container {
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	padding: 1px;
+	margin: 6px;
+}
+
+.hide {
+	display: none;
+}
+
+div.container div.header {
+	background-image: url('Graphics/subheader.png');
+	background-position: bottom left;
+	background-color: #1C2033;
+	color: #FFF;
+	padding: 6px;
+}
+
+
+table {
+	width: 100%; 
+	margin: 0px auto;
+	padding: 1em;	
+}
+
+table thead td {
+	background-color: #CCC;
+	border: 1px solid #EEE;
+	padding: 2px;
+	font-size: 0.8em;
+	text-align: center;
+}
+
+table tr td {
+	padding: 4px;
+	border-bottom: 1px solid #DDD;
+}
+
+table tr:hover {
+	background-color: #FFF;
+}
+
+ol.admin {
+	padding-left: 2em;
+	margin-bottom: 1em;
+}
+ol.admin li {
+	list-style: disc;
+	

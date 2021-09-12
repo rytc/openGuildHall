@@ -1,0 +1,68 @@
+
+<?=alink('admin/', 'Admin Controls');?> &raquo;&nbsp;User&nbsp;Groups
+
+<div class="container">
+	<div class="header">Edit User Groups</div>
+	<table>
+		<thead>
+			<tr>
+				<td>Name</td>
+				<td>User Count</td>
+				<td>&nbsp;</td>
+		</thead>
+		<tbody>
+			<? foreach($this->groups as $group) : ?>
+				<tr>
+					<td>
+						<label class="<?=$group['id']?>"><?=$group['name']?></label>
+						<div class="hide" id="<?=$group['id']?>">
+							<form action="<?=SITE_PATH?>admin/usergroups" method="post">
+								<input type="hidden" name="groupid" value="<?=$group['id']?>" />
+								<input type="text" name="name" value="<?=$group['name']?>" />
+								<input type="submit" value="Save" />
+								<a href="javascript:cancel(<?=$group['id']?>);">Cancel</a>
+							</form>
+						</div>
+					</td>
+					<td style="width: 6em;"><?=$group['user_count']?></td>
+					<td style="width: 8em;">
+						<a href="javascript:edit(<?=$group['id']?>)" onClick="">Edit</a>
+						<? if($group['user_count'] == 0) : ?>
+							<a href="javascript:confirmDelete('<?=SITE_PATH?>admin/usergroups/delete/<?=$group['id']?>')">Delete</a>
+						<? endif; ?>				
+					</td>
+				</tr>
+			<? endforeach; ?>
+		</tbody>
+	</table>
+
+</div>
+
+<div class="container">
+	<div class="header">New Group</div>
+	<form action='<?=SITE_PATH?>admin/usergroups' method='post'>
+		<label>Group name</label>
+		<input type="text" name="name" />
+		<input type="submit" />
+	</form>
+</div>
+
+<div class="container">
+	<div class="header">Move Users</div>
+	<form action='<?=SITE_PATH?>admin/usergroups' method='post'>
+		<input type="hidden" name="moveusers" value="MOVE" />
+		<label>From</label>
+		<select name="from">
+			<? foreach($this->groups as $group) : ?>
+				<option value="<?=$group['id']?>"><?=$group['name']?></option>
+			<? endforeach; ?>
+		</select>
+		<label>To</label>
+		<select name="to">
+			<? foreach($this->groups as $group) : ?>
+				<option value="<?=$group['id']?>"><?=$group['name']?></option>
+			<? endforeach; ?>
+		</select>
+		<input type="submit" />
+	</form>
+</div>

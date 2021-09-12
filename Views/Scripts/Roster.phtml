@@ -1,0 +1,25 @@
+
+<div class="roster">
+	<table>
+		<thead>
+			<tr>
+				<td>&nbsp;</td>
+				<td>Username</td>
+				<td>Registered</td>
+			</tr>
+		</thead>
+	<? foreach($this->users as $user) : ?>
+		<tr>
+			<td class="avatar">
+				<?=displayAvatar($user['avatar'])?>
+			</td>
+			<td>
+				<?=countryIcon($user['country'])?>&nbsp;<?=profileLink($user['username'])?>
+				<sub>Last seen <?=formatDate($user['last_seen'], true)?></sub>
+			</td>
+			<td><?=formatDate($user['register_date'])?></td>
+		</tr>
+	<? endforeach; ?>
+	</table>
+</div>
+<?=$this->pagination?>

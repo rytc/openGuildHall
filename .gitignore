@@ -1,0 +1,8 @@
+*.DS_Store
+*.sublime-project
+*.pdn
+Logs/*
+Config/Config.php
+docs/*
+Themes/oghLight/compiled/*
+

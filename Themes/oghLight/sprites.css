@@ -1,0 +1,169 @@
+
+div.sprite {
+	display: inline-block;
+	background-image:url('graphics/sprites.png');
+	vertical-align: center;
+	min-height: 32px;
+		
+	
+	/* IE7 fix...i hate IE */
+	*display: inline; 
+	zoom: 1;
+}
+
+div.sprite a {
+	text-decoration: none;	
+}
+
+div.bigfacebook {
+	background-position:0px -51px;
+	width: 32px;
+}
+
+div.bigtwitter {
+	background-position:-64px -51px;
+	width: 32px;
+}
+
+div.bigsteam {
+	background-position:-32px -51px;
+	width: 32px;	
+}
+
+div.male {
+	background-position:-49px 0px;
+	width: 16px;
+	min-height: 16px;
+}
+
+div.female {
+	background-position: -67px 0px;
+	width: 12px;
+	min-height: 16px;	
+}
+
+div.email {
+	background-position:-16px 2px;
+	width: 16px;
+	min-height: 12px;	
+}
+
+div.website {
+	background-position:-80px 0px;
+	width: 16px;
+	min-height: 16px;	
+}
+
+div.twitter {
+	background-position:-49px -17px;
+	width: 14px;
+	min-height: 16px;
+}
+
+div.aim {
+	background-position:-98px 0px;
+	width: 14px;
+	min-height: 16px;	
+}
+
+div.yim {
+	background-position:-112px 0px;
+	width: 16px;
+	min-height: 16px;	
+}
+
+div.winlive {
+	background-position:-32px -16px;
+	width: 16px;
+	min-height: 16px;	
+}
+
+div.xboxlive {
+	background-position:0px -16px;
+	width: 16px;
+	min-height: 16px;
+}
+
+div.xfire {
+	background-position:-16px -15px;
+	width: 16px;
+	min-height: 16px;	
+}
+
+div.steam {
+	background-position:-63px -18px;
+	width: 16px;
+	min-height: 16px;	
+}
+
+div.newposts {
+	background-position:0px -83px;
+	width: 24px;
+	min-height: 24px;	
+}
+
+div.nonewposts {
+	background-position:0px -107px;
+	width: 24px;
+	min-height: 24px;	
+}
+
+div.newsticky {
+	background-position:-24px -83px;
+	width: 24px;
+	min-height: 24px;	
+}
+
+div.nonewsticky {
+	background-position:-24px -107px;
+	width: 24px;
+	min-height: 24px;	
+}
+
+div.locked {
+	background-position:-48px -83px;
+	width: 24px;
+	min-height: 24px;	
+}
+
+div.greenflag {
+	background-position:-12px -32px;
+	width: 7px;
+	min-height:6px;	
+}
+
+div.orangeflag {
+	background-position:-20px -32px;
+	width: 7px;
+	min-height: 6px;
+}
+
+div.redflag {
+	background-position:-28px -32px;
+	width: 7px;
+	min-height: 6px;	
+}
+
+div.goto {
+	background-position:-108px -55px;
+	width: 11px;
+	min-height: 8px;
+}
+
+div.delete {
+	background-position:-97px -58px;
+	width: 10px;
+	min-height: 8px;
+}
+
+div.edit {
+	background-position:-118px -54px;
+	width: 8px;
+	min-height: 12px;	
+}
+
+div.quote {
+	background-position:-99px -70px;
+	width: 8px;
+	min-height: 6px;
+}

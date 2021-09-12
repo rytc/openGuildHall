@@ -1,0 +1,52 @@
+<div class="paginator">
+	<ol class="paginator">
+	
+		<? if($this->currentPage == 1) : ?>
+			<li>First</li>
+			<li>&laquo;&nbsp;Previous</li>
+			
+		<? else: ?>
+			<? $previousPage = $this->currentPage - 1; ?>
+			<li><a href="<?=$this->url?>1">First</a></li>
+			<li><a href="<?=$this->url.$previousPage?>">&laquo;&nbsp;Previous</a></li>
+			
+			<? $firstPage = $this->currentPage - 1; ?>
+			<? if($firstPage < 1) { $firstPage = 1; }?>
+			<? if($firstPage -1 > 1) : ?>
+				<li>...</li>
+			<? endif; ?>
+			
+			<? $pageList = generatePageList($this->currentPage, $this->currentPage - 2); ?>
+		
+			<? foreach($pageList as $page) : ?>
+				<? if($page <= $this->numberOfPages && $page != 0) : ?>
+					<li><a href="<?=$this->url?><?=$page?>"><?=$page?></a></li>
+				<? else : break; endif; ?>
+			<? endforeach; ?>
+		<? endif; ?>
+		
+		<li class="active"><?=$this->currentPage?></li>
+		<? $lastPage = $this->currentPage + 2; ?>
+		
+		<? if($lastPage > $this->numberOfPages) { $lastPage -= ($lastPage - $this->numberOfPages); } ?>
+		
+		<? if($lastPage > $this->currentPage) : ?>
+			<? $pageList = generatePageList($this->currentPage, $this->currentPage +2); ?>
+		
+			<? foreach($pageList as $page) : ?>
+				<? if($page <= $this->numberOfPages) : ?>
+					<li><a href="<?=$this->url?><?=$page?>"><?=$page?></a></li>
+				<? else : break; endif; ?>
+			<? endforeach; ?>
+		<? endif; ?>
+		
+		<? if($this->currentPage >= $this->numberOfPages) : ?>
+			<li>Next&nbsp;&raquo;</li>
+			<li>Last</li>
+		<? else : ?>
+			<? $nextPage = $this->curentPage + 2; ?>
+			<li><a href="<?=$this->url?><?=$nextPage?>">Next&nbsp;&raquo;</a></li>
+			<li><a href="<?=$this->url?><?=$this->numberOfPages?>">Last</a></li>
+		<? endif; ?>
+	</ol>
+</div>

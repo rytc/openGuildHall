@@ -1,0 +1,8 @@
+
+<p><?=$this->message?>
+
+<form action="<?=$this->url?>" method="post">
+	<input type="hidden" name="ilike" value="turtles" />
+	<input type="submit" name="Yes" value="Yes, TAKE ME TO YOUR LEADER" />
+	<a href="<?=getLastURI()?>">No, get me out of here!</a>
+</form>

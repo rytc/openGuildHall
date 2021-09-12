@@ -1,0 +1,11 @@
+
+<p>Where do you want to move the thread to?</p>
+<form action="<?=SITE_PATH?>forum/admin/<?=$this->mode?>/<?=$this->id?>" method="post">
+	<select name="board">
+		<? foreach($this->boardList as $board) : ?>
+			<option value="<?=$board['id']?>"><?=$board['title']?></option>
+		<? endforeach; ?>
+	</select>
+	<input type="submit" value="Move Thread" />
+	<a href="<?=getLastURI()?>">Go back</a>
+</form>

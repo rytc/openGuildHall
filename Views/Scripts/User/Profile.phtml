@@ -1,0 +1,102 @@
+<table class="userprofile">
+	<thead>
+		<tr>
+			<td colspan="2"><?=$this->user['username']?>'s Profile</td>
+		</tr>
+	</thead>
+	<tr>
+		<td class="bioleft">
+			<?=displayAvatar($this->user['avatar'])?>
+			<div class="statusicons">
+				<?=onlineFlag($this->user['last_seen'])?>
+				<?=countryIcon($this->user['country'])?>
+				<?=genderIcon($this->user['gender'])?>
+			</div>
+			
+			<dl>
+				<dt>Group:</dt>
+				<dd><?=$this->user['group_name']?></dd>
+				
+				<dt>Last Seen:</dt>
+				<dd><?=formatDate($this->user['last_seen'], true)?></dd>
+				
+				<dt>Registered:</dt>
+				<dd><?=formatDate($this->user['register_date'])?></dd>
+				
+				<dt>Posts:</dt>
+				<dd><?=$this->user['posts']?></dd>
+				
+			</dl>
+			
+			<div class="header">
+				Contact
+			</div>
+			<? if(!checkUserPrivacy($this->user['contact_privacy'])) : ?>
+				<ol class="contact">
+				
+				<? if(!empty($this->user['email'])) : ?>
+	            	<li><div class="sprite email">&nbsp;</div>
+	            	&nbsp;<?=$this->user['email']?></li>
+	            <? endif; ?>
+	
+	            <? if(!empty($this->user['website'])) : ?>
+	            	<li><div class="sprite website">&nbsp;</div>
+	            	&nbsp;<a href="<?=$this->user['website']?>"><?=cleanURLForDisplay($this->user['website'])?></a></li>
+	            <? endif; ?>
+	
+	            <? if(!empty($this->user['twitter'])) : ?>
+	            	<li><div class="sprite twitter">&nbsp;</div>
+	            	&nbsp;<a href="http://www.twitter.com/<?=$this->user['twitter']?>"><?=$this->user['twitter']?></a></li>
+	            <? endif; ?>
+	
+	            <? if(!empty($this->user['aim'])) : ?>
+	            	<li><div class="sprite aim">&nbsp;</div>
+	            	&nbsp;<?=$this->user['aim']?></li>
+	            <? endif; ?>
+	
+	            <? if(!empty($this->user['yim'])) : ?>
+	            	<li><div class="sprite yim">&nbsp;</div>>
+	            	&nbsp;<?=$this->user['yim']?></li>
+	            <? endif; ?>
+	
+	            <? if(!empty($this->user['winLive'])) : ?>
+	            	<li><div class="sprite winlive">&nbsp;</div>
+	            	&nbsp;<?=$this->user['winLive']?></li>
+	            <? endif; ?>
+	
+	            <? if(!empty($this->user['xbl'])) : ?>
+	            	<li><div class="sprite xboxlive">&nbsp;</div>
+	            	&nbsp;<?=$this->user['xbl']?></li>
+	            <? endif; ?>
+	
+	            <? if(!empty($this->user['xfire'])) : ?>
+	            	<li><div class="sprite xfire">&nbsp;</div>
+	            	&nbsp;<?=$this->user['xfire']?></li>
+	            <? endif; ?>
+	            
+	            <? if(!empty($this->user['steam'])) : ?>
+	            	<li><div class="sprite steam">&nbsp;</div>
+	            	&nbsp;<?=$this->user['steam']?></li>
+	            <? endif; ?>
+	            				
+				</ol>
+			<? else : ?>
+				<sub>User has hidden their contact information.</sub>
+			<? endif; ?>
+			
+			<br />
+			<? if(Acl::getInstance()->hasAccess('Admin', 'Controls', 'Edit') == ALLOW) : ?>
+				<?=alink('admin/edituser/'.$this->user['username'], 'Edit this user')?>
+			<? endif; ?>
+		</td>
+		<td class="bioright">
+			<? if(empty($this->user['about'])) : ?>
+				<p>This user has not writen a bio.</p>
+			<? else: ?>
+				<?=parseUserText($this->user['about'])?>
+			<? endif; ?>
+		<hr />
+		<?=parseUserText($this->user['signature']);?>
+		</td>
+	</tr>
+</table>

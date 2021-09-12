@@ -1,0 +1,16 @@
+/**
+ * LIGHT THEME
+ */
+h3.version {
+	font-size: 1em;
+	padding: 8px;
+}
+
+h2.h {
+	padding: 8px;
+}
+
+ol li {
+	list-style: disc;
+	margin-left: 2em;
+}

@@ -1,0 +1,77 @@
+ol.contact {
+	margin-left:0.5em;
+	
+}
+
+ol.contact li {
+	list-style: none;
+	padding-bottom: 0.5em;
+	margin: 0;
+}
+
+table {
+	width: 90%;
+}
+
+table.userprofile {
+	border: 1px solid #CCC;
+	margin: 0 auto;
+	
+}
+
+thead td {
+	background-image: url('Graphics/subheader.png');
+	background-position: bottom left;
+	background-color: #1C2033;
+	color: #FFF;
+	padding: 6px;
+}
+
+td.bioleft {
+	background-color: #EEE;
+	overflow: hidden;
+	width: 30%;
+}
+
+td.bioleft img.avatar {
+	display: block;
+	padding: 6px;
+	margin: 0 auto;
+}
+
+td.bioleft dl {
+	font-size: 0.8em;
+	display: block;
+
+}
+
+td.bioleft dt {
+	float:left;
+	font-weight: bold;
+	display: block;
+
+	margin-bottom: 0.5em;
+	
+}
+
+td.bioleft dd {
+	display: block;
+	margin-left: 30%;
+	margin-bottom: 0.5em;
+}
+
+td.bioleft div.statusicons {
+	text-align: center;
+}
+
+td.bioleft div.header {
+	width: 100%;
+	background-color: #DDD;
+	padding: 4px;
+}
+
+td.bioright {
+	padding: 6px;
+	vertical-align: top;
+}
+

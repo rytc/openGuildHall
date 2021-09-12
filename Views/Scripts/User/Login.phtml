@@ -1,0 +1,32 @@
+<? $e[-10] = 'User does not exist'; ?>
+
+
+<form action="<?=SITE_PATH?>user/login" method="post">
+<ol>
+	<li>
+		<label>Username</label>
+		<input type="text" name="username" value="<?=$this->username?>" style="width: 8em" />
+		<? if(is_array($this->errors['username'])) : ?>
+			<ol class="error">
+				<? foreach($this->errors['username'] as $error) : ?>
+					<li><?=$e[$error]?>
+				<? endforeach; ?>
+			</ol>
+	<? endif; ?>
+	</li>
+	
+	<li>
+		<label>Password</label>
+		<input type="password" name="password" style="width: 8em" />
+	</li>
+	
+	<li>
+		<label>Remember</label>
+		<input type="checkbox" name="remember" /><br />
+	</li>
+	
+	<li>
+		<input type="submit" value="Login"> or <a href="/user/register">Register</a>
+	</li>
+</ol>
+</form>

@@ -1,0 +1,54 @@
+
+<?=alink('admin/', 'Admin Controls');?> &raquo;&nbsp;Edit&nbsp;User
+
+<div class="container">
+	<? if($this->mode == 'search') : ?>
+		<div class="header">
+			Edit User
+		</div>
+		<p>Enter exact username. Alternativly, go to the user's profile and click "Edit this user"</p>
+		<form action="<?=SITE_PATH?>admin/edituser" method="post">
+			<label>Username</label><br />
+			<input type="text" name="username" /><br />
+			<input type="submit" />
+		</form>
+	<?  else : ?>
+		<div class="header">
+			Editing <?=$this->user['username']?>
+		</div>
+		<br /><br />
+		<form action="<?=SITE_PATH?>admin/edituser/<?=cleanTextForURL($this->user['username'])?>" method="post">
+		<input type="hidden" name="madechanges" value="creeperbecreeping" />
+		<input type="hidden" name="username" value="<?=$this->user['username']?>"/>
+		<label>Change group</label>
+		<select name="group">
+			<? foreach($this->groups as $group) : ?>
+				<? if($group['id'] == $this->user['group']) : ?>
+					<option value="<?=$group['id']?>" selected="selected"><?=$group['name']?></option>
+				<? else: ?>
+					<option value="<?=$group['id']?>"><?=$group['name']?></option>
+				<? endif; ?>
+			<? endforeach; ?>
+		</select>
+		<br /><br />
+		<label>Delete Avatar</label>
+		<?=checkBox('deleteavatar', 1, false)?><br />
+		<label>Clear Signature</label>
+		<?=checkBox('deletesignature', 1, false)?><br />
+		<label>Clear Biography</label>
+		<?=checkBox('deletebio', 1, false)?><br />
+		<br /><br />
+		<? if($this->user['disabled']>=1) : ?>
+			<label>Enable Account</label>
+			<?=checkBox('enableaccount', 1, false)?><br />
+		<? else: ?>
+			<label>Disable Account</label>
+			<?=checkBox('disableaccount', 1, false)?><br />
+		<? endif; ?>
+		<input type="submit" />
+		</form>
+		
+		
+		
+	<? endif; ?>
+</div>

@@ -1,0 +1,15 @@
+<p><?=$this->_message?><br /></p>
+
+<ul id="message">
+<? if($this->url != null) : ?>
+	<? if(is_array($this->url)) : ?>
+		<? foreach($this->url as $title => $url) : ?>
+			<li><a href="<?=$url?>"><?=$title?></a></li>
+		<? endforeach; ?>
+	<? else : ?>
+		<li><a href="<?=$this->url?>">Continue</a></li>
+	<? endif; ?>
+    
+<? endif; ?>
+    <li><a href="<?=getLastUri()?>">Go Back</a></li>
+</ul>

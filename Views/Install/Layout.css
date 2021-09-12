@@ -1,0 +1,35 @@
+body {
+	background-color: #222;
+	font-family: Verdana;
+}
+
+span.error {
+	color: #CC0000;
+	display: block;
+}
+
+div.content {
+	background-color: #FFF;
+	border: 2px solid #777;
+	margin: 0px auto;
+	padding: 4px;
+	width: 50%;
+}
+
+p {
+	text-indent: 1em;
+}
+
+form label {
+	display: block;
+}
+
+form input {
+	margin-left: 1em;
+	margin-bottom: 1em;
+}
+
+ol {
+	list-style: none;
+	padding-left: 0.5em;
+}

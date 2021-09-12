@@ -1,0 +1,76 @@
+<?=alink('forum/', 'Redeemed Forum')?> &raquo; 
+<?$categoryurl = cleanTextForURL($this->category['title']).'-'.$this->category['id'];?>
+<a href="<?=SITE_PATH?>forum/category/<?=$categoryurl?>"><?=$this->category['title']?></a> &raquo; <?=$this->board['title']?>
+<?=$this->pagination?>
+
+<? if(Acl::getInstance()->hasAccess('Forum', 'Board', 'Post', $this->board['id']) == ALLOW) : ?>
+	<a href="<?=SITE_PATH?>forum/post/newthread/<?=$this->board['id']?>" class="button">Post a new thread</a>
+<? endif; ?>
+
+
+<div class="category">
+	<div class="cattitle">
+		<?=$this->category['title'];?>
+	</div>
+	<div class="boards">
+		<table>
+		<thead>
+			<tr class="heading">
+			<td>&nbsp;</td>
+			<td>Threads</td>
+			<td>Author</td>
+			<td>Stats</td>
+			<td>Last Post</td>
+			</tr>
+		</thead>
+		<tbody>
+			<? if(is_array($this->threads)) : ?>
+			<? foreach($this->threads as $thread) : ?>
+				<tr>
+					<td class="status">
+						<? if($thread['locked']>=1) : ?>
+							<div class="sprite locked">&nbsp;</div>
+						<? elseif(threadIsUnread($thread['board'], $thread['id'])) : ?>
+							<? if($thread['sticky']>=1) : ?>
+								<div class="sprite newsticky">&nbsp;</div>
+							<? else: ?>
+								<div class="sprite newposts">&nbsp;</div>
+							<? endif; ?>
+						<? else : ?>
+							<? if($thread['sticky']>=1) : ?>
+								<div class="sprite nonewsticky">&nbsp;</div>
+							<? else: ?>
+								<div class="sprite nonewposts">&nbsp;</div>
+							<? endif; ?>
+						<?  endif; ?>
+					</td>
+					<td class="board">
+						<?$threadurl = cleanTextForURL($thread['title']).'-'.$thread['id']?>			
+						<a href="<?=SITE_PATH?>forum/thread/<?=$threadurl?>" class="primeurl"><?=parseUserText($thread['title'], false, false)?></a>
+					</td>
+					<td class="author"><?=profileLink($thread['author'])?></td>
+					<td class="stats"><span class="postlabel"><?=$thread['post_count']-1?> <?=pl('Post', 'Posts', $thread['post_count']-1)?></span><br />
+									  <span class="viewslabel"><?=$thread['views']?> <?=pl('View', 'Views', $thread['views'])?></span></td>
+					<td class="lastpost">
+					<? if(!empty($thread['last_post'])) : ?>
+						<?=formatDate($thread['date'], true)?><br />
+						By <?=profileLink($thread['last_post']['author'])?> 
+						<div class="sprite goto"><?=alink("forum/thread/".$threadurl."/last", "&nbsp;&nbsp;")?></div>
+					<? else : ?>
+						None
+					<? endif; ?>
+					</td>
+				</tr>
+			<? endforeach; ?>
+			<? else : ?>
+				<tr>
+					<td>&nbsp;</td>
+					<td>No threads have been posted in this board.</td>
+				</tr>
+			<? endif; ?>
+		</tbody>
+		</table>
+	</div>
+</div>
+
+<?=$this->pagination?>

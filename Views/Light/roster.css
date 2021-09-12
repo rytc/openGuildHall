@@ -1,0 +1,39 @@
+
+div.roster {
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	margin: 0px auto;
+	padding: 1px;
+	width: 70%;	
+}
+
+table {
+	width: 100%;
+}
+
+thead td {
+	background-image: url('Graphics/subheader.png');
+	background-position: bottom left;
+	background-color: #1C2033;
+	color: #FFF;
+	padding: 6px;
+	
+}
+
+td.avatar {
+	width: 42px;
+}
+
+td.avatar img {
+	width: 42px;
+	padding: 2px;
+}
+
+td sub {
+	display: block;
+	font-size: 0.8em;
+	padding: 0;
+}
+td img {
+	vertical-align: middle;
+}

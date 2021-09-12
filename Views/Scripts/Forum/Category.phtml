@@ -1,0 +1,56 @@
+<?=alink('forum/', 'Redeemed Forum')?> &raquo;
+<?=$this->category['title']?>
+<div class="category">
+	<div class="cattitle">
+		<?=$this->category['title']?>
+	</div>
+	<div class="boards">
+		<table>
+		<thead>
+			<tr class="heading">
+				<td>&nbsp;</td>
+				<td>Boards</td>
+				<td>Topics</td>
+				<td>Posts</td>
+				<td>Last Post</td>
+			</tr>
+		</thead>
+		<tbody>
+			<? foreach($this->boards as $board) : ?>
+			<tr>
+				<td class="status">
+					<? if(boardIsUnread($board['id'])) : ?>
+						<div class="sprite newposts">&nbsp;</div>
+					<? else : ?>
+						<div class="sprite nonewposts">&nbsp;</div>
+					<? endif; ?>
+				</td>
+				<td class="board">
+					<?$boardurl = cleanTextForURL($board['title'].'-'.$board['id']);?>
+					<a href="<?=SITE_PATH?>forum/board/<?=$boardurl?>" class="nonew"><?=$board['title']?></a>
+					<p><?=$board['description']?></p>
+				</td>
+				<td class="topics">
+					<?=$board['thread_count']?>
+				</td>
+				<td class="posts">
+					<?=$board['post_count']?>
+				</td>
+				<td class="lastpost">
+					<? if(!empty($board['last_post'])) : ?>
+					<?$lastPost = $board['last_post']?>
+					<?$lastPostURL = cleanTextForURL($lastPost['thread_title'].'-'.$lastPost['thread_id'])?>
+					In <?=alink("forum/thread/".$lastPostURL, parseUserText($lastPost['thread_title'], false, false))?>
+					<div class="sprite goto"><?=alink("forum/thread/".$lastPostURL."/last", "&nbsp;&nbsp;")?></div> 
+					by <?=profileLink($lastPost['author'])?> <br />
+					on <?=formatDate($lastPost['date'], true)?>
+					<? else : ?>
+						No new posts
+					<? endif; ?>
+				</td>
+			</tr>
+			<?  endforeach; ?>
+		</tbody>
+		</table>	
+	</div>
+</div>

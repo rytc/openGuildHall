@@ -1,0 +1,33 @@
+<? if($this->errormsg) : ?>
+<p style="color: #A00;"><?=$this->errormsg?></p>
+<? else : ?>
+<p>Your account must be activated to finish the registration process.</p>
+<? endif; ?>
+
+<form action="<?=SITE_PATH?>user/activate" method="post" accept-charset="utf-8">
+<ol id="form">
+    <li>
+        <label>Username</label>
+        <input type="text" name="username" value="<?=$this->formValues['username']?>" />
+        <? if(isset($this->errors['username'])) : ?>
+            <ul class="error">
+            <? foreach($this->errors['username'] as $error) : ?>
+                <li><?=$error?></li>
+            <? endforeach; ?>
+            </ul>
+        <? endif; ?>
+    </li>
+    <li>
+        <label>Activation Code</label>
+        <input type="text" name="actkey" value="<?=$this->formValues['actkey']?>" />
+        <? if(isset($this->errors['actkey'])) : ?>
+            <ul class="error">
+            <? foreach($this->errors['actkey'] as $error) : ?>
+                <li><?=$error?></li>
+            <? endforeach; ?>
+            </ul>
+        <? endif; ?>
+    </li>
+    <li><input type="submit" value="Activate Account" /></li>
+</ol>
+</form>

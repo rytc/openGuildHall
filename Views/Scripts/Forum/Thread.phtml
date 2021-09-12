@@ -1,0 +1,96 @@
+
+<?=alink('forum/', 'Redeemed Forum')?> &raquo;
+<?=alink('forum/category/'.cleanTextForURL($this->category['title'].'-'.$this->category['id']), $this->category['title'])?> &raquo; 
+<?=alink('forum/board/'.cleanTextForURL($this->board['title'].'-'.$this->board['id']), $this->board['title'])?> &raquo;
+<?=$this->pagetitle?>
+<?=$this->pagination?>
+
+<? if(Acl::getInstance()->hasAccess('Forum', 'Board', 'Reply', $this->board['id']) == ALLOW && 
+		$this->thread['locked'] < 1) : ?>
+	<a href="<?=SITE_PATH?>forum/post/newreply/<?=$this->thread['id']?>" class="button">Reply to thread</a>
+<? endif; ?>
+
+<? if(Acl::getInstance()->hasAccess('Forum', 'Board', 'Post', $this->board['id']) == ALLOW &&
+		$this->thread['locked'] < 1) : ?>
+	<a href="<?=SITE_PATH?>forum/post/newthread/<?=$this->board['id']?>" class="button">Post a new thread</a>
+<? endif; ?>
+
+<? $postNum = ($this->pagenum - 1) * POSTS_PER_PAGE + 1;?>
+<? foreach($this->posts as $post) : ?>
+<? $user = $this->users[$post['author_id']]?>
+<div class="post">
+	<div class="posthead">
+		<span class="posthead"><?=formatDate($post['date'], true)?> <a href="#<?=$postNum?>">#<?=$postNum?></a></span>
+	</div>
+	
+	<div class="user">
+		<span class="username">
+			<?=profileLink($user['username'])?><?=onlineFlag($user['last_seen'])?>
+		</span>
+		<?=displayAvatar($user['avatar'])?><br />
+		<span class="userinfo">
+		<?if($user['disabled']>=1) { echo "<br />Suspended<br />"; }?>
+		Joined: <?=formatDate($user['register_date'], false)?><br />
+		Posts: <?=$user['posts']?><br />
+		<?=countryIcon($user['country'])?>
+		</span>
+	</div>
+	<div class="body">
+		<? if(!empty($post['title'])) : ?>
+			<div class="posttitle">
+				<span class="posttitle"><a name="<?=$postNum?>"><?=parseUserText($post['title'], false, false)?></a></span>
+			</div>
+		<?  endif; ?>
+
+		<div class="content">
+			<?=parseUserText($post['copy'], !$post['disable_bbcode'], !$post['disable_smileys'])?>
+			<hr />
+			<?=parseUserText($user['signature'], true, true);?>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<div style="clear:both;"></div>
+	<div class="postfooter">
+		<span class="postfooter">
+		<? if(CurrentUser::getInstance()->isLoggedIn()) : ?>
+			<? if($this->isMod === true || $post['author_id'] == CurrentUser::getInstance()->id) : ?>
+				<? if($postNum > 1) : ?>
+					<div class="sprite delete"></div>&nbsp;<?=alink('forum/post/delete/'.$post['id'], 'Delete Post')?>
+				<? endif; ?>
+				<div class="sprite edit"></div>&nbsp;<?=alink('forum/post/edit/'.$post['id'], 'Edit Post')?>
+			<? endif; ?>
+			<div class="sprite quote"></div>&nbsp;<?=alink('forum/post/newreply/'.$this->thread['id'].'?quote='.$post['id'], 'Reply with quote')?>
+		<? endif; ?>
+		</span>
+	</div>
+	<div style="clear:both;"></div>
+
+</div>
+<? $postNum++; ?>
+<? endforeach; ?>
+
+<? if(Acl::getInstance()->hasAccess('Forum', 'Board', 'Reply', $this->board['id']) == ALLOW &&
+		$this->thread['locked'] >= 1) : ?>
+	<a href="<?=SITE_PATH?>forum/post/newreply/<?=$this->thread['id']?>" class="button">Reply to thread</a>
+<? endif; ?>
+
+<? if(Acl::getInstance()->hasAccess('Forum', 'Board', 'Post', $this->board['id']) == ALLOW &&
+		$this->thread['locked'] >= 1) : ?>
+	<a href="<?=SITE_PATH?>forum/post/newthread/<?=$this->board['id']?>" class="button">Post a new thread</a>
+<? endif; ?>
+
+<?=$this->pagination?>
+
+<? if(Acl::getInstance()->hasAccess('Forum', 'Board', 'Moderate') == ALLOW) : ?>
+	<a href="<?=SITE_PATH?>forum/admin/deletethread/<?=$this->thread['id']?>" class="button">Delete</a>
+	<a href="<?=SITE_PATH?>forum/admin/lockthread/<?=$this->thread['id']?>" class="button"><?if($this->thread['locked']){echo 'Un';}?>Lock</a>
+	<a href="<?=SITE_PATH?>forum/admin/movethread/<?=$this->thread['id']?>" class="button">Move</a>
+	<a href="<?=SITE_PATH?>forum/admin/stickythread/<?=$this->thread['id']?>" class="button"><?if($this->thread['sticky']){echo 'Un';}?>Sticky</a>
+<? endif; ?>
+
+<br /><br />
+
+<?=alink('forum/', 'Redeemed Forum')?> &raquo;
+<?=alink('forum/category/'.cleanTextForURL($this->category['title'].'-'.$this->category['id']), $this->category['title'])?> &raquo;
+<?=alink('forum/board/'.cleanTextForURL($this->board['title'].'-'.$this->board['id']), $this->board['title'])?> &raquo;
+<?=$this->pagetitle?>

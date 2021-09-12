@@ -1,0 +1,84 @@
+<p>openGuildHall is currently under heavy development and is currently missing many standard features. This
+current release of openGuildHall is strictly for developers wishing to contribute to the project. openGuldHall
+is distributed under the GNU General Public License v2</p>
+
+<form action="<?=SITE_PATH?>install" method="post">
+	<h3>1. Setup the database</h3>
+	<ol>
+		<li>
+			<label>MySQL Username</label>
+			<? if(array_key_exists('mysqlusername', $this->errors)) : ?>
+				<span class="error"><?=$this->errors['mysqlusername']?></span>
+			<? endif; ?>
+			<input type="text" name="mysqlusername" value="<?=$this->formValues['mysqlusername']?>" />
+		</li>
+
+		<li>
+			<label>MySQL Password</label>
+			<? if(array_key_exists('mysqlpassword', $this->errors)) : ?>
+				<span class="error"><?=$this->errors['mysqlpassword']?></span>
+			<? endif; ?>
+			<input type="password" name="mysqlpassword" value=""/>
+		</li>
+
+		<li>
+			<label>MySQL Database</label>
+			<? if(array_key_exists('mysqldatabase', $this->errors)) : ?>
+				<span class="error"><?=$this->errors['mysqldatabase']?></span>
+			<? endif; ?>
+			<input type="text" name="mysqldatabase" value="<?=$this->formValues['mysqldatabase']?>" />
+		</li>
+
+		<li>
+			<label>MySQL Hostname</label>
+			<? if(array_key_exists('mysqlhostname', $this->errors)) : ?>
+				<span class="error"><?=$this->errors['mysqlhostname']?></span>
+			<? endif; ?>
+			<input type="text" name="mysqlhostname" value="<?=$this->formValues['mysqlhostname']?>" />
+		</li>
+
+		<li>
+			<label>Table Prefix</label>
+			<? if(array_key_exists('mysqlprefix', $this->errors)) : ?>
+				<span class="error"><?=$this->errors['mysqlprefix']?></span>
+			<? endif; ?>
+			<input type="text" name="mysqlprefix" value="<?=$this->formValues['mysqlprefix']?>" />
+		</li>
+	</ol>
+
+	<h3>2. Setup the admin account</h3>
+	<ol>
+		<li>
+			<label>Username</label>
+			<? if(array_key_exists('adminusername', $this->errors)) : ?>
+				<span class="error"><?=$this->errors['adminusername']?></span>
+			<? endif; ?>
+			<input type="text" name="adminusername" value="<?=$this->formValues['adminusername']?>" />
+		</li>
+
+		<li>
+			<label>Password</label>
+			<? if(array_key_exists('adminpassword', $this->errors)) : ?>
+				<span class="error"><?=$this->errors['adminpassword']?></span>
+			<? endif; ?>
+			<input type="password" name="adminpassword" />
+		</li>
+
+		<li>
+			<label>Password (again)</label>
+			<input type="password" name="adminpassword2" />
+		</li>
+
+
+		<li>
+			<label>Email</label>
+			<? if(array_key_exists('adminemail', $this->errors)) : ?>
+				<span class="error"><?=$this->errors['adminemail']?></span>
+			<? endif; ?>
+			<input type="text" name="adminemail" value="<?=$this->formValues['adminemail']?>" />
+		</li>
+	</ol>
+	<h3>3. ...</h3>
+	<h3>4. Profit!</h3>
+	<input type="submit" name="Install" />
+</form>

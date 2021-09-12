@@ -1,0 +1,271 @@
+
+<ul class="tabs">
+    <li><a href="#usertab" style="font-weight: bold;"><?=$this->user['username']?></a></li>
+    <li><a href="#bio">Bio</a></li>
+    <li><a href="#avatar">Avatar</a></li>
+    <li><a href="#signature">Signature</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#password">Password</a></li>
+    <li><a href="#settings">Settings</a></li>
+</ul>
+<div class="tab_container">
+    <div id="usertab" class="tab_content">
+        <h3>Hello <?=$this->user['username']?></h3>
+        <sub>You were last seen <?=formatDate($this->user['last_seen'], true)?></sub><br /><br />
+
+		<? if($this->user['avatar'] == "none" && $this->user['country'] == 0) : ?>
+		<span class="warning"><b>Your profile looks boring.</b><br />
+		<sub>Why don't you fix it up by changing your avatar, gender, and country!</sub></span>
+		<br />
+		<? endif; ?>
+		
+		<? if(empty($this->user['steam']) || empty($this->user['xfire']) || empty($this->user['aim'])) : ?>
+		<span class="warning"><b>We can't get to know you like this!</b><br />
+		<sub>We noticed that you haven't set any contact information. How are we supposed to play games together if we have no way of finding you?
+		Try setting your Steam, XFire, or AIM contact information!</sub></span>
+		<br />
+		<? endif; ?>
+
+    </div>
+    <div id="bio" class="tab_content">
+        <form action="<?=SITE_PATH?>user/controls" method="post" accept-charset="utf-8">
+            <ol class="form">
+				<li>
+					<label>Country</label>
+					<?=countryIcon($this->user['country'])?>
+					<select name="country" id="country">
+						<? foreach($this->countries as $code => $name) : ?>
+							<? if($this->user['country'] == $code) : ?>
+								<option selected="selected" value="<?=$code?>"><?=$name?></option>
+							<? else: ?>
+								<option value="<?=$code?>"><?=$name?></option>
+							<? endif; ?>
+						<? endforeach; ?>
+					</select>
+				</li>
+				<li>
+					<label>Gender</label>
+					<? if($this->user['gender'] == 'male') : ?>
+						<input type="radio" name="gender" value="male" checked="checked" />
+					<? else : ?>
+						<input type="radio" name="gender" value="male" />
+					<? endif; ?>
+					<div class="sprite male">&nbsp;</div>
+					
+					<? if($this->user['gender'] == 'female') : ?>
+						<input type="radio" name="gender" value="female" checked="checked" />
+					<? else : ?>
+						<input type="radio" name="gender" value="female" />
+					<? endif; ?>
+					<div class="sprite female">&nbsp;</div>
+					
+					<? if($this->user['gender'] != 'male' && $this->user['gender'] != 'female') : ?>
+						<input type="radio" name="gender" value="none" checked="checked" /> 
+					<? else : ?>
+						<input type="radio" name="gender" value="none" />
+					<? endif; ?>
+					None
+				</li>
+                <li>
+                    <label>Biography</label>
+                    <sub>Tell us about yourself. What do you like? What do you dislike? What is your past? What is in your future? What is your gaming setup? What games do you like?</sub><br />
+                    <textarea name="about" cols="60" rows="10"><?=$this->user['about']?></textarea>
+                </li>
+                <div class="errors">
+                    &nbsp;
+                </div>
+                <li>
+                    <input type="submit" value="Submit" class="submit" />
+                </li>
+            </ol>
+        </form>
+    </div>
+    <div id="avatar" class="tab_content"> 
+        <form action="<?=SITE_PATH?>user/controls" method="post" accept-charset="utf-8">
+            <ol class="form">
+                <li>
+                    <label>Avatar</label>
+                    <?=displayAvatar($this->user['avatar'])?>
+                    <br />
+                    <input type="text" size="70" value="<?=$this->user['avatar']?>" name="avatar" id="avatarinput" />
+                </li>
+                <div class="errors">
+                </div>
+                <li>
+                    <input type="submit" value="Submit" class="submit"  />
+                </li>
+            </ol>
+        </form>
+    </div>
+    <div id="signature" class="tab_content">
+        <form action="<?=SITE_PATH?>user/controls" method="post" accept-charset="utf-8">
+            <ol class="form">
+                <li>
+                    <label>Signature</label>
+                    <textarea name="signature" cols="60" rows="10"><?=$this->user['signature']?></textarea>
+                </li>
+                <div class="errors">
+                </div>
+                <li>
+                    <input type="submit" value="Submit" class="submit" />
+                </li>
+            </ol>
+        </form>
+    </div>
+    <div id="contact" class="tab_content">
+        <form action="<?=SITE_PATH?>user/controls" method="post" accept-charset="utf-8">
+            <ol class="form">
+                <li>
+                    <label><div class="sprite email">&nbsp;</div>&nbsp;Email Address</label>
+                    <input type="text" name="email" value="<?=$this->user['email']?>"/>
+                </li>
+                <li>
+                    <label><div class="sprite website">&nbsp;</div>&nbsp;Web Site</label>
+                    <input type="text" name="website" value="<?=$this->user['website']?>" />
+                </li>
+                <li>
+                    <label><div class="sprite twitter">&nbsp;</div>&nbsp;Twitter</label>
+                    <input type="text" name="twitter" value="<?=$this->user['twitter']?>" />
+                </li>
+                <li>
+                    <label><div class="sprite aim">&nbsp;</div>&nbsp;AIM</label>
+                    <input type="text" name="aim" value="<?=$this->user['aim']?>" />
+                </li>
+                <li>
+                    <label><div class="sprite yim">&nbsp;</div>&nbsp;YIM</label>
+                    <input type="text" name="yim" value="<?=$this->user['yim']?>" />
+
+                </li>
+                <li>
+                    <label><div class="sprite winlive">&nbsp;</div>&nbsp;Windows Live</label>
+                    <input type="text" name="winLive" value="<?=$this->user['winLive']?>" />
+
+                </li>
+                <li>
+                    <label><div class="sprite xboxlive">&nbsp;</div>&nbsp;Xbox Live</label>
+                    <input type="text" name="xbl" value="<?=$this->user['xbl']?>" />
+
+                </li>
+                <li>
+                    <label><div class="sprite xfire">&nbsp;</div>&nbsp;XFire</label>
+                    <input type="text" name="xfire" value="<?=$this->user['xfire']?>" />
+                </li>
+                <li>
+                    <label><div class="sprite steam">&nbsp;</div>&nbsp;Steam</label>
+                    <input type="text" name="steam" value="<?=$this->user['steam']?>" />
+                </li>
+				<li style="padding-top: 2em;">
+					<label>Privacy Settings</label>
+					<select name="contactPrivacy">
+					<? if($this->user['contact_privacy'] == 0) : ?>
+						<option value="0" selected="selected">
+					<? else : ?>
+						<option value="0">
+					<? endif; ?>
+						Only visible to members</option>
+						
+					<? if($this->user['contact_privacy'] == 1) : ?>
+						<option value="1" selected="selected">
+					<? else : ?>
+						<option value="1">
+					<? endif; ?>
+						Only visible to logged in users</option>
+						
+					<? if($this->user['contact_privacy'] == 2) : ?>
+						<option value="2" selected="selected">
+					<? else : ?>
+						<option value="2">
+					<? endif; ?>
+						Visible to everyone</option>
+					</select>
+				</li>
+                <div class="errors">
+                </div>
+                <li>
+                    <input type="submit" value="Submit" class="submit" />
+                </li>
+            </ol>
+        </form>
+    </div>
+    <div id="password" class="tab_content">
+        <form action="<?=SITE_PATH?>user/controls" method="post" accept-charset="utf-8">
+            <ol class="form">
+                <li>
+                    <label>New Password</label>
+                    <input type="password" name="password" />
+                    <? if(isset($this->errors['password'])) : ?>
+                        <ul class="error">
+                            <? foreach($this->errors['password'] as $error) :?>
+                                <li>$error</li>
+                            <? endforeach; ?>
+                        </ul>
+                    <? endif; ?>
+                </li>
+                <li>
+                    <label>New Password (Again)</label>
+                    <input type="password" name="password2" />
+                </li>
+                <div class="errors">
+                </div>
+                <li>
+                    <input type="submit" value="Submit" class="submit" />
+                </li>
+            </ol>
+        </form>
+    </div>
+    <div id="settings" class="tab_content">
+            <form action="<?=SITE_PATH?>user/controls" method="post" accept-charset="utf-8">
+                <ol class="form">
+                    <li>
+                        <label>Timezone</label>
+                        <select name="timezone">
+                            <? foreach(getTimezones() as $country => $zones) :?>
+                            <optgroup label="<?=$country?>">
+                                <? if(is_array($zones)) : ?>
+                                    <? foreach($zones as $timezone => $city) : ?>
+                                      <? if($this->user['timezone'] == $timezone) : ?>
+                                        <option selected="selected" value="<?=$timezone?>">
+                                      <? else: ?>
+                                        <option value="<?=$timezone?>">
+                                      <? endif; ?>
+                                      <?=$city?></option>
+                                    <? endforeach; ?>
+                                <? else: ?>
+                                    <option><?=$country?></option>
+                                <? endif; ?>
+                            </optgroup>
+                            <? endforeach; ?>
+                        </select>
+                        <? if(isset($this->errors['timezone'])) : ?>
+                            <ul class="error">
+                                <? foreach($this->errors['timezone'] as $error) :?>
+                                    <li>$error</li>
+                                <? endforeach; ?>
+                            </ul>
+                        <? endif; ?>
+                    </li>
+                    <!--<li>
+                        <label>Site Theme</label>
+                        <select name="theme">
+                            <? //if($this->user['theme'] == 'DarkBlue'): ?>
+                                <option selected="selected" value="DarkBlue">Dark Blue</option>
+                            <? //else : ?>
+                                <option value="DarkBlue">Dark Blue</option>
+                            <? //endif; ?>
+
+                            <? //if($this->user['theme'] == 'Light'): ?>
+                                <option selected="selected" value="Light">Light Blue</option>
+                            <? //else : ?>
+                                <option value="Light">Light</option>
+                            <? //endif; ?>
+                        </select>
+                    </li>-->
+                    <div class="errors">
+                    </div>
+                    <li>
+                        <input type="submit" value="Submit" class="submit" />
+                    </li>
+                </ol>
+            </form>
+    </div>
+</div>

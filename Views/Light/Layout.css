@@ -1,0 +1,457 @@
+/*
+ * LIGHT theme
+ */
+ 
+@import url("reset.css");
+
+/*
+ * Structure
+ */
+body {
+	background-image: url('Graphics/bg.png');
+	background-repeat: repeat-x;
+	background-position: top left;
+    background-color: #1C2033;
+    font-family: "Verdana";
+	height: 100%;
+	margin-bottom: 36px;
+}
+ 
+div#bodywrapper {
+	min-width: 990px;
+	max-width: 1230px;
+	margin: 0px auto;
+}
+ 
+div#header {
+	background-image: url('Graphics/logo.png');
+	background-repeat: no-repeat;
+	background-position: center;
+    background-color: #1C2033;
+    border: 1px solid #000;
+    border-bottom: 0;
+    margin: 0px auto;
+    min-height: 124px;
+}
+ 
+div#header .accent {
+	background-color: #DDD;
+	min-height: 6px;
+}
+ 
+
+div#header img {
+	margin: 0px auto;
+	padding: 14px;
+}
+
+div#nav {
+    background-color: #222;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	text-align: center;
+}
+
+div#nav a {
+    color: #FFF;
+	font-size: 0.8em;
+    text-decoration: none;
+    
+}
+
+div#nav a:hover {
+	text-decoration: underline;
+}
+
+
+div#nav ol {
+	padding: 4px;
+	
+}
+
+div#nav li {
+	display: inline;
+	margin-right: 2%;
+}
+
+div#usernav {
+	background-color: #000;
+	border-right: 1px solid #555;
+	border-bottom: 1px solid #555;
+	border-top: 1px solid #222;
+	border-left: 1px solid #222;
+	padding: 8px;
+	float: right; 
+	color: #FFF; 
+	margin: 10px;
+	margin-right: 2em;
+	font-size: 0.9em;
+	width: 225px;	
+}
+
+div#usernav a {
+	color: #8D93B5;	
+}
+
+div#usernav a:hover {
+	text-decoration: underline;	
+}
+
+div#usernav ol {
+	color: #FFF;
+	list-style-type: disc;
+}
+
+div#usernav ol li {
+	color: #FFF;
+	margin-left: 2em;
+}
+
+
+div#content {
+	background-color: #FFF;
+	border: 1px solid #555;
+	border-top: 1px solid #CCC;
+	margin: 0em auto;
+	padding: 10px;
+	height: 100%;
+}
+
+div#footer {
+	border-top: 1px solid #EEE;
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+div#footer div#quote {
+	float: right;
+	font-size: 0.75em;
+	text-align: right;
+	max-width: 50%;
+	width: auto;
+}
+
+div#footer div#credit {
+	color: #999;
+	font-size: 0.75em;
+	width: 100%;
+}
+
+div#footer div#credit a {
+	color: #888;
+	text-decoration: none;
+}
+
+div#footer div#credit a:hover {
+	color: #555;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+div.bbcodeList {
+	margin-bottom: 0.5em;
+	padding: 2px;
+}
+
+div.smileyList {
+	margin-top: 2px;
+	border: 1px solid #AAA;
+	width: 100px;
+	float: left;
+}
+
+div.signature {
+	font-size: 0.85em;
+	margin: 8px;
+}
+
+div.paginator {
+	width: 90%;
+	text-align: right;
+	padding: 0.75em;
+	margin: 0 auto;
+}
+
+div.form {
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	margin: 0px auto;
+	width: 90%;
+}
+
+th {
+	text-align: left;
+}
+
+td {
+    vertical-align: middle;
+}
+
+
+/*
+ * Text Styling
+ */
+
+h1 {font-size: 1.6em;}
+h2 {font-size: 1.571em} /* 22px */  
+h3 {font-size: 1.429em} /* 20px */  
+h4 {font-size: 1.286em} /* 18px */  
+h5 {font-size: 1.143em} /* 16px */  
+h6 {font-size: 1em}     /* 14px */
+
+h2#pagetitle {
+	font-size: 1.6em;
+    border-bottom: 1px solid #EEE;
+    margin-bottom: 12px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #474E7B;
+} 
+
+a {
+    color: #5C6077;
+    font-size: 0.857em;
+    text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;	
+}
+
+.button {
+	background-color: #EEE;
+	border: 1px solid #CCC;
+	display: inline;
+	font-size: 0.7em;
+	font-weight: bold;
+	margin: 2px;
+	line-height: 2em;
+	padding: 4px;
+	
+}
+
+p {
+	font-size: 0.9em;
+    text-indent: 1.5em;
+	line-height: 1.5em;
+    margin-bottom: 0.75em;
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+ 
+div#header a {
+	text-decoration: none;
+}
+
+
+
+hr {
+	border: 1px solid #CCC;
+	border-bottom: 0;
+}
+
+ol.form li {
+	list-style-type: none;
+	margin-left: 0.5em;
+	padding: 4px;
+}
+
+ol.form ul.error li {
+	list-style-type: disc;
+	color: #F00;
+	text-indent: 0;
+	font-size: 0.8em;
+	margin-left: 4em;
+	padding: 2px;
+}
+
+
+ol.paginator {
+	float: right;
+}
+
+ol.paginator li {
+	color: #AAA;
+	background-color: #EEE;
+	border: 1px solid #AAA;
+	list-style-type: none;
+	font-size: 0.6em;
+	font-style: italic;
+	padding: 0.3em;
+	display: inline;
+	margin: 0.2em;
+}
+
+ol.paginator li a {
+	color: #474E7B;
+	text-decoration: none;
+	font-style: normal;
+	font-weight: bold;
+}
+
+ol.paginator li a:hover {
+	text-decoration: underline;
+	font-weight: bold;	
+}
+
+ol.paginator li.active {
+	background-color: #FFE;
+	color: #474E7B;
+	font-weight: bold;
+	font-style: normal;
+}
+
+
+ol.smileyList li {
+	float: left;
+	margin: 0;
+	padding: 0.25em;
+}
+
+ol.smileyList li img {
+	margin: 0;
+	padding: 0;
+}
+
+ul {
+	color: #000;
+	display:block;
+	list-style-type: disc;
+	margin-left: 2em;
+	margin-top: 1em;
+}
+
+ul li {
+	margin-top: 0.7em;	
+}
+
+div.bbcodeList a.button {
+	background-color: #FFF;
+	border: 1px solid #AAA;
+	
+	padding-top: 1px;
+	text-decoration: none;
+	font-family: Courier;
+}
+
+div.bbcodeList a.button img {
+	margin: 0;
+	padding: 0;
+	vertical-align: top;
+}
+
+
+
+ul#message {
+	list-style: none;
+}
+
+ul#message li {
+	margin-left: 1em;
+	list-style: none;
+}
+
+ul#message li a {
+	font-size: 0.8em;
+}
+
+
+input[type='text'], input[type='password'], textarea {
+	font-face: inherit;
+	font-size: 1em;
+    padding: 2px;
+    border: 1px solid #AAA;
+	color: #000;
+}
+
+label#availability {
+	margin-left: 2em;
+}
+
+li label {
+	display: block;
+	padding: 4px;
+	font-size: 0.75em;
+}
+
+/*
+ * BBCode
+ */
+div.bbcode_quote {
+
+	border: 1px solid #CACED7;
+	margin: 8px;
+	width: 98%;
+	font-size: 1em;
+}
+
+div.bbcode_quote_head {
+	background-color: #CACED7;
+	color: #000;
+	margin-bottom: 4px;
+	padding: 4px;
+	font-weight: bold;
+	font-size: 0.8em;
+}
+
+div.bbcode_quote_body {
+	padding: 4px;
+}
+
+div.bbcode_code {
+	display: block;
+	border: 1px solid #CACED7;
+	margin: 8px;
+	font-family: Consolas, Courier New;
+	font-size: 1em;
+	width: 98%;
+	height: ;
+}
+
+div.bbcode_code_head {
+	background-color: #CACED7;
+	color: #000;
+	padding: 4px;
+	font-weight: bold;
+	margin-bottom: 4px;
+	font-size: 0.8em;
+}
+
+div.bbcode_code_body {
+	white-space: pre-wrap;
+	padding: 4px;
+}
+
+div.bbcode_youtube {
+	margin: 1em;
+}
+
+span.bbcode_spoiler {
+	background-color: #EEE;
+	color: #EEE;
+	border: 1px dashed #AAA;
+}
+
+
+ul#profilesummary li {
+	list-style-type: none;
+	margin: 0;
+}
+
+
+/*
+ * ReCAPTCHA
+ */
+ .recaptchatable .recaptcha_image_cell, #recaptcha_table {
+   background-color:none !important;
+ }
+ 
+ #recaptcha_table {
+   border-color: #none !important;
+ }
+ 
+ #recaptcha_response_field {
+   border-color: #AAA !important;
+   background-color:none !important;
+}
